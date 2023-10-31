@@ -23,5 +23,7 @@ jobs:
       - run: yarn set version 3.3.1
       - name: Install dependencies
         run: yarn install --immutable
+      - name: Check types
+        run: yarn tsc:check
       - name: Run tests
         run: yarn test
