@@ -25,5 +25,7 @@ jobs:
         run: yarn install --immutable
       - name: Check types
         run: yarn tsc:check
+      - name: Check eslint
+        run: yarn eslint:check
       - name: Run tests
         run: yarn test

@@ -1,4 +1,4 @@
-import {ICancellationToken} from "./types";
+import {ICancellationToken} from './types';
 
 export default class CancellationToken implements ICancellationToken {
   public isCanceled = false;

@@ -1,4 +1,4 @@
-import type {Task} from "../types";
+import type {Task} from '../types';
 import oneTask from '../one-task';
 import CancellationToken from '../cancellation-token';
 
@@ -20,7 +20,7 @@ describe('oneTask', () => {
     };
     const createTask = (
       name: TaskNames,
-      {durMs = 0, callReject = false}: CreateTaskOptions = {},
+      {durMs = 0, callReject = false}: CreateTaskOptions = {}
     ): Task => {
       return () => {
         return new Promise<void>((resolve, reject) => {
@@ -38,20 +38,21 @@ describe('oneTask', () => {
     };
 
     const updateTask = (task: jest.Mock, options: CreateTaskOptions) => {
-      const update = (taskName: TaskNames) => task.mockImplementation(createTask(taskName, options))
+      const update = (taskName: TaskNames) =>
+        task.mockImplementation(createTask(taskName, options));
       if (task === task1) {
-        update('task1')
+        update('task1');
       } else if (task === task2) {
-        update('task2')
+        update('task2');
       } else if (task === task3) {
-        update('task3')
+        update('task3');
       } else {
         throw new Error('Task not found');
       }
     };
 
     const setDuration = (task: jest.Mock, durMs: number) => {
-      updateTask(task, {durMs})
+      updateTask(task, {durMs});
     };
 
     return {
@@ -84,7 +85,7 @@ describe('oneTask', () => {
 
   const getLastToken = (task: jest.Mock): CancellationToken => {
     return task.mock.lastCall[0] as CancellationToken;
-  }
+  };
 
   it('should run the task immediately at the first start', () => {
     runTask(task1);

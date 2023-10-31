@@ -1,6 +1,6 @@
 import CancellationToken from './cancellation-token';
 import {ignoreError} from './utils';
-import {OneTask, Task} from "./types";
+import {OneTask, Task} from './types';
 
 export default function oneTask(): OneTask {
   let cancellationToken: CancellationToken | null = null;
